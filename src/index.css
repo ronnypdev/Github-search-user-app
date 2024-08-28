@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,10 +12,22 @@
 
 @layer base {
   :root {
-    --star-yellow: #FACC15;
-    --dark-blue: #0F172A;
-    --dark-gray: #374151;
-    --pale-blue: #E6E9FB;
+    /*
+      == Light colors ==
+    */
+    --color-primary-blue: #0079FF;
+    --color-gray: #697C9A;
+    --color-dark-gray: #4B6A9B;
+    --color-matte-black: #2B3442;
+    --color-pale-gray: #F6F8FF;
+    --color-white-gray: #FEFEFE;
+    /*
+      == Dark colors ==
+    */
+    --color-white: #FFFFFF;
+    --color-black: #141D2F;
+    --color-navy-black: #1E2A47;
+
   }
 }
 
