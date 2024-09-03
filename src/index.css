@@ -16,6 +16,7 @@
       == Light colors ==
     */
     --color-primary-blue: #0079FF;
+    --color-light-blue: #60ABFF;
     --color-gray: #697C9A;
     --color-dark-gray: #4B6A9B;
     --color-matte-black: #2B3442;
@@ -30,6 +31,33 @@
 
   }
 }
+
+body {
+  color: var(--color-matte-black);
+  font-family: "Space Mono", system-ui, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+}
+
+.heading-1 {
+  @apply text-[26px] font-SpaceMono text-matteBlack font-bold leading-normal
+}
+
+.heading-2 {
+  @apply text-[22px] font-SpaceMono text-matteBlack font-bold leading-normal
+}
+
+.heading-3 {
+  @apply text-[16px] font-SpaceMono text-primaryBlue font-normal leading-normal
+}
+
+.heading-4 {
+  @apply text-[13px] font-SpaceMono text-darkGray font-normal leading-normal
+}
+
+
 
 @layer components {
   .max-container {
