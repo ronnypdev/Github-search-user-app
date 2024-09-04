@@ -1,15 +1,21 @@
-import Button from "./components/base/Button"
+import Form from "./components/Form"
+import Moon from "./assets/icon-moon.svg"
 
 function App() {
 
   return (
-    <>
-      <h1 className="heading-1">The Octocat</h1>
-      <h2 className="heading-2">Lorem ipsum dolor sit amet</h2>
-      <h3 className="heading-3">@octocat</h3>
-      <h4 className="heading-4">Repos</h4>
-      <Button buttonText="Search"/>
-    </>
+    <main className="h-full flex justify-center items-center">
+      <div className="max-container">
+        <header>
+          <h1 className="heading-1">devfinder</h1>
+          <div>
+            <p>dark</p>
+            <img src={Moon} alt="Moon icon" />
+          </div>
+        </header>
+        <Form />
+      </div>
+   </main>
   )
 }
 
