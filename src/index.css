@@ -54,7 +54,7 @@ body {
 }
 
 .heading-4 {
-  @apply text-[13px] font-SpaceMono text-darkGray font-normal leading-normal
+  @apply text-[13px] font-SpaceMono text-darkGray leading-normal
 }
 
 
