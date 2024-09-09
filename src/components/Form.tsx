@@ -10,10 +10,14 @@ export default function Form() {
   return (
     <>
     <form action="#">
-      <label htmlFor="search">
-        <img src={SearchIcon} alt="Search Icon" />
-        <input type="text" id="search" name="search" placeholder="Search GitHub username…" />
-        <Button buttonText="search"/>
+      <label htmlFor="search" className="relative flex justify-between items-center">
+        <img className="absolute z-[100]" src={SearchIcon} alt="Search Icon" />
+        <input className="absolute px-[20px] py-[35px]" type="text" id="search" name="search" placeholder="Search GitHub username…" />
+        <Button buttonText="search" style={{
+          marginLeft: "auto",
+          zIndex: "100"
+        }}
+      />
       </label>
     </form>
 
