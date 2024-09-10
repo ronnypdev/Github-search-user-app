@@ -20,6 +20,9 @@ export default {
         white: "var(--color-white)",
         black: "var(--color-black)",
         navyBlack: "var(--color-navy-black)",
+      },
+      boxShadow: {
+        'paleWhite': '0px 16px 30px -10px rgba(70, 96, 187, 0.20)'
       }
     },
   },

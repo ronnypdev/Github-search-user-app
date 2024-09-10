@@ -9,25 +9,26 @@ import CompanyIcon from "../assets/icon-company.svg"
 export default function Form() {
   return (
     <>
-    <form action="#">
+    <form className="mb-10" action="#">
       <label htmlFor="search" className="relative flex justify-between items-center">
-        <img className="absolute z-[100]" src={SearchIcon} alt="Search Icon" />
-        <input className="absolute px-[20px] py-[35px]" type="text" id="search" name="search" placeholder="Search GitHub username…" />
+        <img className="absolute z-[100] w-[22px] h-[22px] mr-auto ml-3" src={SearchIcon} alt="Search Icon" />
+        <input className="absolute w-full shrink-0 py-[24px] px-[50px] rounded-[15px] shadow-paleWhite" type="text" id="search" name="search" placeholder="Search GitHub username…" />
         <Button buttonText="search" style={{
           marginLeft: "auto",
-          zIndex: "100"
+          zIndex: "100",
+          marginRight: "10px"
         }}
       />
       </label>
     </form>
 
-    <div className="results">
-      <div>
+    <div className="results bg-white grid grid-cols-3 gap-[2px] p-9 shadow-paleWhite">
+      <div className="col-start-1 col-end-2">
         <img src={ProfileAvatar} alt="Profile Avatar Image" />
       </div>
 
-      <div className="profile-info">
-        <header>
+      <div className="profile-info col-start-2 col-span-3">
+        <header className="flex justify-between items-center">
           <h1 className="heading-1">The Octocat</h1>
           <p>Joined 25 Jan 2011</p>
         </header>
