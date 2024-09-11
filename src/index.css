@@ -57,6 +57,21 @@ body {
   @apply text-[13px] font-SpaceMono text-darkGray leading-normal
 }
 
+.paragraph-text {
+  @apply text-[15px] font-SpaceMono text-normalGray leading-normal font-normal
+}
+
+.stats-section {
+  @apply flex justify-around items-center p-4 bg-paleGray mb-8
+}
+
+.links {
+  @apply grid grid-cols-2 gap-1
+}
+
+.link-item {
+  @apply flex justify-start items-center
+}
 
 
 @layer components {

@@ -5,7 +5,7 @@ function App() {
 
   return (
     <main className="h-full flex justify-center items-start">
-      <div className="max-container w-5/12">
+      <div className="max-container md:w-5/12">
         <header className="flex justify-between items-center my-9">
           <h1 className="heading-1">devfinder</h1>
           <div className="flex justify-center items-center gap-4">

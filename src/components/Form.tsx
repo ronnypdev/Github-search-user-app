@@ -23,18 +23,18 @@ export default function Form() {
     </form>
 
     <div className="results bg-white grid grid-cols-3 gap-[2px] p-9 shadow-paleWhite">
-      <div className="col-start-1 col-end-2">
-        <img src={ProfileAvatar} alt="Profile Avatar Image" />
+      <div className="col-start-1 col-end-2 flex justify-center items-start">
+        <img className="w-[117px] h-[117px]" src={ProfileAvatar} alt="Profile Avatar Image" />
       </div>
 
       <div className="profile-info col-start-2 col-span-3">
         <header className="flex justify-between items-center">
           <h1 className="heading-1">The Octocat</h1>
-          <p>Joined 25 Jan 2011</p>
+          <p className="paragraph-text">Joined 25 Jan 2011</p>
         </header>
-        <h3 className="heading-3">@octocat</h3>
-        <p>This profile has no bio</p>
-        <div className="stats">
+        <h3 className="heading-3 mb-5">@octocat</h3>
+        <p className="paragraph-text mb-8">This profile has no bio</p>
+        <div className="stats-section">
           <div>
             <h4 className="heading-4">Repos</h4>
             <h2 className="heading-2">8</h2>
@@ -49,21 +49,21 @@ export default function Form() {
           </div>
         </div>
         <div className="links">
-          <div>
-            <img src={LocationIcon} alt="Google Map Icon" />
-            <p>San Francisco</p>
+          <div className="link-item mb-4">
+            <img className="w-4 h-5 shrink-0" src={LocationIcon} alt="Google Map Icon" />
+            <a className="paragraph-text ml-3" href="#">San Francisco</a>
           </div>
-          <div>
-            <img src={WebsiteIcon} alt="Website Icon" />
-            <p>https://github.blog</p>
+          <div className="link-item mb-4">
+            <img className="w-4 h-5 shrink-0" src={TwitterIcon} alt="Twitter Icon" />
+            <a className="paragraph-text ml-3" href="#">Not Available</a>
           </div>
-          <div>
-            <img src={TwitterIcon} alt="Twitter Icon" />
-            <p>Not Available</p>
+          <div className="link-item mb-4">
+            <img className="w-4 h-5 shrink-0" src={WebsiteIcon} alt="Website Icon" />
+            <a className="paragraph-text ml-3" href="#">https://github.blog</a>
           </div>
-          <div>
-            <img src={CompanyIcon} alt="Company Icon" />
-            <p>@github</p>
+          <div className="link-item mb-4">
+            <img className="w-4 h-5 shrink-0" src={CompanyIcon} alt="Company Icon" />
+            <a className="paragraph-text ml-3" href="#">@github</a>
           </div>
         </div>
       </div>
