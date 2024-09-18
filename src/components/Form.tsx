@@ -8,7 +8,31 @@ import WebsiteIcon from "../assets/icon-website.svg"
 import TwitterIcon from "../assets/icon-twitter.svg"
 import CompanyIcon from "../assets/icon-company.svg"
 
+type userInfo = {
+  avatar_url: string,
+  name: string,
+  bio: string,
+  created_at: string,
+  public_repos: number,
+  followers: number,
+  following: number,
+  location: string,
+  twitter_username: null | string,
+  blog: string,
+  company: string,
+}
+
+// type profileData = {
+//   data: userInfo
+// }
+
 export default function Form() {
+  const [user, setUser] = useState<object>({});
+
+  useEffect(() => {
+
+  },[])
+
   return (
     <>
     <form className="mb-10" action="#">
