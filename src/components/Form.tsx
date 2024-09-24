@@ -23,13 +23,29 @@ type userInfo = {
 // type profileData = {
 //   data: userInfo
 // }
-
 export default function Form() {
-  const [user, setUser] = useState<object>({});
+  const [user, setUser] = useState<object | null>({});
+
+  console.log("The user data is: ", user);
 
   useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const response = await fetch("https://api.github.com/user");
 
-  },[])
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`)
+        }
+
+        const data: userInfo = await response.json();
+        setUser(data);
+
+      } catch (error) {
+        console.log(`Could not find users with that name please try again ${error}`)
+      }
+    }
+    fetchUserData();
+  },[user])
 
   return (
     <>
