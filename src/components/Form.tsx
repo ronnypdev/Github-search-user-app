@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react"
-
 import Button from "./base/Button"
 import SearchIcon from "../assets/icon-search.svg"
 import ProfileAvatar from "../assets/images/Oval.png"
