@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import Button from "./base/Button"
 import SearchIcon from "../assets/icon-search.svg"
 import ProfileAvatar from "../assets/images/Oval.png"
@@ -20,32 +21,28 @@ type userInfo = {
   company: string,
 }
 
-// type profileData = {
-//   data: userInfo
-// }
 export default function Form() {
-  const [user, setUser] = useState<object | null>({});
-
-  console.log("The user data is: ", user);
+  const [userData, setUserData] = useState<object | null>({});
+  const [userName, setUserName] = useState<string>("ronnypdev");
 
   useEffect(() => {
     async function fetchUserData() {
       try {
-        const response = await fetch("https://api.github.com/user");
+        const response = await fetch(`https://api.github.com/users/${userName}`);
 
         if (!response.ok) {
           throw new Error(`HTTP error: ${response.status}`)
         }
 
         const data: userInfo = await response.json();
-        setUser(data);
+        setUserData(data);
 
       } catch (error) {
         console.log(`Could not find users with that name please try again ${error}`)
       }
     }
     fetchUserData();
-  },[user])
+  },[])
 
   return (
     <>
@@ -64,12 +61,12 @@ export default function Form() {
 
     <div className="results bg-white grid grid-cols-3 gap-[2px] p-9 shadow-paleWhite">
       <div className="col-start-1 col-end-2 flex justify-center items-start">
-        <img className="w-[117px] h-[117px]" src={ProfileAvatar} alt="Profile Avatar Image" />
+        <img className="w-[117px] h-[117px] rounded-full" src={userData.avatar_url} alt="Profile Avatar Image" />
       </div>
 
       <div className="profile-info col-start-2 col-span-3">
         <header className="flex justify-between items-center">
-          <h1 className="heading-1">The Octocat</h1>
+          <h1 className="heading-1">{userData.login}</h1>
           <p className="paragraph-text">Joined 25 Jan 2011</p>
         </header>
         <h3 className="heading-3 mb-5">@octocat</h3>
