@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Button from "./base/Button"
 import SearchIcon from "../assets/icon-search.svg"
 import LocationIcon from "../assets/icon-location.svg"
@@ -23,42 +23,42 @@ interface userInfo {
 
 export default function Form() {
   const [userData, setUserData] = useState<userInfo | null>(null);
-  const [userName, setUserName] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  
+  const [userNameInput, setUserNameInput] = useState<string>("");
+  // const [loading, setLoading] = useState<boolean>(true);
 
   function searchUserName(event: React.ChangeEvent<HTMLInputElement>) {
-    setUserName(event.target.value);
+    setUserNameInput(event.target.value);
   }
 
-  console.log("userName: ", userName);
+  async function fetchUserData() {
+    try {
+      const response = await fetch(`https://api.github.com/users/${userNameInput}`);
 
-  useEffect(() => {
-    async function fetchUserData() {
-      try {
-        const response = await fetch(`https://api.github.com/users/${userName}`);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error: ${response.status}`)
-        }
-
-        const result: userInfo = await response.json();
-        setUserData(result);
-
-      } catch (error) {
-        console.log(`Could not find users with that name please try again ${error}`)
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`)
       }
+
+      const result: userInfo = await response.json();
+      setUserData(result);
+
+    } catch (error) {
+      console.log(`Could not find users with that name please try again ${error}`)
     }
+  }
+
+
+  function submitUserName(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     fetchUserData();
-  },[])
+  }
 
   return (
     <>
-    <form className="mb-10" action="#">
+    <form className="mb-10" onSubmit={submitUserName}>
       <label htmlFor="search" className="relative flex justify-between items-center">
         <img className="absolute z-[100] w-[22px] h-[22px] mr-auto ml-3" src={SearchIcon} alt="Search Icon" />
-        <input className="absolute w-full shrink-0 py-[24px] px-[50px] rounded-[15px] shadow-paleWhite" id="search" type="text" value={userName} name="search" placeholder="Search GitHub username…" onChange={searchUserName} />
-        <Button buttonText="search" style={{
+        <input className="absolute w-full shrink-0 py-[24px] px-[50px] rounded-[15px] shadow-paleWhite" id="search" type="text" value={userNameInput} name="search" placeholder="Search GitHub username…" onChange={searchUserName} />
+        <Button buttonText="search" eventType="submit" style={{
           marginLeft: "auto",
           zIndex: "100",
           marginRight: "10px"
