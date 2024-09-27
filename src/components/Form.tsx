@@ -23,9 +23,15 @@ interface userInfo {
 
 export default function Form() {
   const [userData, setUserData] = useState<userInfo | null>(null);
-  const [userName, setUserName] = useState<string>("ronnypdev");
+  const [userName, setUserName] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   
+
+  function searchUserName(event: React.ChangeEvent<HTMLInputElement>) {
+    setUserName(event.target.value);
+  }
+
+  console.log("userName: ", userName);
 
   useEffect(() => {
     async function fetchUserData() {
@@ -51,7 +57,7 @@ export default function Form() {
     <form className="mb-10" action="#">
       <label htmlFor="search" className="relative flex justify-between items-center">
         <img className="absolute z-[100] w-[22px] h-[22px] mr-auto ml-3" src={SearchIcon} alt="Search Icon" />
-        <input className="absolute w-full shrink-0 py-[24px] px-[50px] rounded-[15px] shadow-paleWhite" type="text" id="search" name="search" placeholder="Search GitHub username…" />
+        <input className="absolute w-full shrink-0 py-[24px] px-[50px] rounded-[15px] shadow-paleWhite" id="search" type="text" value={userName} name="search" placeholder="Search GitHub username…" onChange={searchUserName} />
         <Button buttonText="search" style={{
           marginLeft: "auto",
           zIndex: "100",
@@ -70,40 +76,40 @@ export default function Form() {
         <div className="profile-info col-start-2 col-span-3">
           <header className="flex justify-between items-center">
             <h1 className="heading-1">{userData.login}</h1>
-            <p className="paragraph-text">Joined 25 Jan 2011</p>
+            <p className="paragraph-text">Joined {userData.created_at}</p>
           </header>
           <h3 className="heading-3 mb-5">@{userData.login}</h3>
-          <p className="paragraph-text mb-8">This profile has no bio</p>
+          <p className="paragraph-text mb-8">{userData.bio}</p>
           <div className="stats-section">
             <div>
               <h4 className="heading-4">Repos</h4>
-              <h2 className="heading-2">8</h2>
+              <h2 className="heading-2">{userData.public_repos}</h2>
             </div>
             <div>
               <h4 className="heading-4">Followers</h4>
-              <h2 className="heading-2">3938</h2>
+              <h2 className="heading-2">{userData.followers}</h2>
             </div>
             <div>
               <h4 className="heading-4">Following</h4>
-              <h2 className="heading-2">9</h2>
+              <h2 className="heading-2">{userData.following}</h2>
             </div>
           </div>
           <div className="links">
             <div className="link-item mb-4">
               <img className="w-4 h-5 shrink-0" src={LocationIcon} alt="Google Map Icon" />
-              <a className="paragraph-text ml-3" href="#">San Francisco</a>
+              {userData.location ? <a className="paragraph-text ml-3" href={userData.location}>{userData.location}</a> : <p className="paragraph-text ml-2">None</p>}
             </div>
             <div className="link-item mb-4">
               <img className="w-4 h-5 shrink-0" src={TwitterIcon} alt="Twitter Icon" />
-              <a className="paragraph-text ml-3" href="#">Not Available</a>
+              {userData.twitter_username ? <a className="paragraph-text ml-3" href={userData.twitter_username}>{userData.twitter_username}</a> : <p className="paragraph-text ml-2">None</p>}
             </div>
             <div className="link-item mb-4">
               <img className="w-4 h-5 shrink-0" src={WebsiteIcon} alt="Website Icon" />
-              <a className="paragraph-text ml-3" href="#">https://github.blog</a>
+              {userData.blog ? <a className="paragraph-text ml-3" href={userData.blog}>{userData.blog}</a> : <p className="paragraph-text ml-2">None</p>}
             </div>
             <div className="link-item mb-4">
               <img className="w-4 h-5 shrink-0" src={CompanyIcon} alt="Company Icon" />
-              <a className="paragraph-text ml-3" href="#">@github</a>
+              {userData.company ? <a className="paragraph-text ml-3" href={userData.company}>{userData.company}</a> : <p className="paragraph-text ml-2">None</p>}
             </div>
           </div>
         </div>
