@@ -19,6 +19,7 @@ export default {
         whiteGray: "var(--color-white-gray)",
         white: "var(--color-white)",
         black: "var(--color-black)",
+        flameRed: "var(--color-red)",
         navyBlack: "var(--color-navy-black)",
       },
       boxShadow: {

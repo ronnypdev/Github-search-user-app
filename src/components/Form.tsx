@@ -57,13 +57,16 @@ export default function Form() {
     <form className="mb-10" onSubmit={submitUserName}>
       <label htmlFor="search" className="relative flex justify-between items-center">
         <img className="absolute z-[100] w-[22px] h-[22px] mr-auto ml-3" src={SearchIcon} alt="Search Icon" />
-        <input className="absolute w-full shrink-0 py-[24px] px-[50px] rounded-[15px] shadow-paleWhite" id="search" type="text" value={userNameInput} name="search" placeholder="Search GitHub username…" onChange={searchUserName} />
-        <Button buttonText="search" eventType="submit" style={{
-          marginLeft: "auto",
-          zIndex: "100",
-          marginRight: "10px"
-        }}
-      />
+        <input className="absolute w-full shrink-0 py-[24px] px-[50px] rounded-[15px] shadow-paleWhite" id="search" type="text" value={userNameInput} 
+        name="search" placeholder="Search GitHub username…" onChange={searchUserName} />
+        <div className="z-[100] ml-auto relative flex justify-between items-center mr-3">
+            {userData &&
+              <p className="text-flameRed text-[15px] leading-normal font-bold mr-4">
+                {userNameInput !== userData.login ? "No results" : ""}
+              </p>
+            }
+          <Button buttonText="search" eventType="submit"/>
+        </div>
       </label>
     </form>
 
@@ -105,7 +108,7 @@ export default function Form() {
             </div>
             <div className="link-item mb-4">
               <img className="w-4 h-5 shrink-0" src={WebsiteIcon} alt="Website Icon" />
-              {userData.blog ? <a className="paragraph-text ml-3" href={userData.blog}>{userData.blog}</a> : <p className="paragraph-text ml-2">None</p>}
+              {userData.blog ? <a className="paragraph-text ml-3 hover:underline" href={userData.blog}>{userData.blog}</a> : <p className="paragraph-text ml-2">None</p>}
             </div>
             <div className="link-item mb-4">
               <img className="w-4 h-5 shrink-0" src={CompanyIcon} alt="Company Icon" />
