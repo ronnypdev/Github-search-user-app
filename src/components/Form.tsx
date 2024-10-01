@@ -1,10 +1,10 @@
-import { useState } from "react"
-import Button from "./base/Button"
-import SearchIcon from "../assets/icon-search.svg"
-import LocationIcon from "../assets/icon-location.svg"
-import WebsiteIcon from "../assets/icon-website.svg"
-import TwitterIcon from "../assets/icon-twitter.svg"
-import CompanyIcon from "../assets/icon-company.svg"
+import { useState } from "react";
+import Button from "./base/Button";
+import LocationIcon from "../assets/icon-location.svg";
+import WebsiteIcon from "../assets/icon-website.svg";
+import TwitterIcon from "../assets/icon-twitter.svg";
+import CompanyIcon from "../assets/icon-company.svg";
+import SearchIcon from "./icons/SearchIcon";
 
 interface userInfo {
   avatar_url: string;
@@ -57,8 +57,8 @@ export default function Form() {
     <>
       <form className="mb-10" onSubmit={submitUserName}>
         <label htmlFor="search" className="relative flex justify-between items-center">
-          <img className="absolute z-[100] w-[22px] h-[22px] mr-auto ml-3" src={SearchIcon} alt="Search Icon" />
-          <input className="absolute w-full shrink-0 py-[24px] px-[50px] rounded-[15px] shadow-paleWhite" id="search" type="text" value={userNameInput} 
+          <SearchIcon fillColor="#0079ff" />
+          <input className="absolute w-full shrink-0 py-[24px] px-[50px] rounded-[15px] shadow-paleWhite" id="search" type="text" value={userNameInput}
           name="search" placeholder="Search GitHub username…" onChange={searchUserName} />
           <div className="z-[100] ml-auto relative flex justify-between items-center mr-3">
               {resultsError && <p className="text-flameRed text-[15px] leading-normal font-bold mr-4">
