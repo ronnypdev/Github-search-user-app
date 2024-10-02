@@ -1,5 +1,5 @@
 import Form from "./components/Form"
-import Moon from "./assets/icon-moon.svg"
+import MoonIcon from "./components/icons/MoonIcon"
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
           <h1 className="heading-1">devfinder</h1>
           <div className="flex justify-center items-center gap-4 cursor-pointer">
             <h4 className="heading-4 uppercase font-bold tracking-[2.5px] hover:text-black">dark</h4>
-            <img src={Moon} alt="Moon icon" />
+            <MoonIcon fillColor="#697C9A"/>
           </div>
         </header>
         <Form />

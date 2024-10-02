@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Button from "./base/Button";
-import LocationIcon from "../assets/icon-location.svg";
-import WebsiteIcon from "../assets/icon-website.svg";
-import TwitterIcon from "../assets/icon-twitter.svg";
-import CompanyIcon from "../assets/icon-company.svg";
+import CompanyIcon from "./icons/CompanyIcon";
+import LocationIcon from "./icons/LocationIcon";
 import SearchIcon from "./icons/SearchIcon";
+import TwitterIcon from "./icons/TwitterIcon";
+import WebsiteIcon from "./icons/WebsiteIcon";
 
 interface userInfo {
   avatar_url: string;
@@ -99,19 +99,19 @@ export default function Form() {
             </div>
             <div className="links">
               <div className="link-item mb-4">
-                <img className="w-4 h-5 shrink-0" src={LocationIcon} alt="Google Map Icon" />
+                <LocationIcon fillColor="#4b6a9b"/>
                 {userData.location ? <a className="paragraph-text ml-3" href={userData.location}>{userData.location}</a> : <p className="paragraph-text ml-2">None</p>}
               </div>
               <div className="link-item mb-4">
-                <img className="w-4 h-5 shrink-0" src={TwitterIcon} alt="Twitter Icon" />
+                <TwitterIcon fillColor="#4b6a9b"/>
                 {userData.twitter_username ? <a className="paragraph-text ml-3" href={userData.twitter_username}>{userData.twitter_username}</a> : <p className="paragraph-text ml-2">None</p>}
               </div>
               <div className="link-item mb-4">
-                <img className="w-4 h-5 shrink-0" src={WebsiteIcon} alt="Website Icon" />
+                <WebsiteIcon fillColor="#4b6a9b"/>
                 {userData.blog ? <a className="paragraph-text ml-3 hover:underline" href={userData.blog}>{userData.blog}</a> : <p className="paragraph-text ml-2">None</p>}
               </div>
               <div className="link-item mb-4">
-                <img className="w-4 h-5 shrink-0" src={CompanyIcon} alt="Company Icon" />
+                <CompanyIcon fillColor="#4b6a9b"/>
                 {userData.company ? <a className="paragraph-text ml-3" href={userData.company}>{userData.company}</a> : <p className="paragraph-text ml-2">None</p>}
               </div>
             </div>
