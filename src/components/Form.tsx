@@ -6,6 +6,11 @@ import SearchIcon from "./icons/SearchIcon";
 import TwitterIcon from "./icons/TwitterIcon";
 import WebsiteIcon from "./icons/WebsiteIcon";
 
+
+type FormProps = {
+  toogleDarkMode: boolean;
+}
+
 interface userInfo {
   avatar_url: string;
   name: string;
@@ -21,7 +26,7 @@ interface userInfo {
   login: string;
 }
 
-export default function Form() {
+export default function Form({toogleDarkMode}: FormProps) {
   const [userData, setUserData] = useState<userInfo | null>(null);
   const [userNameInput, setUserNameInput] = useState<string>("");
   const [resultsError, setResutlsError] = useState<string | null>(null);

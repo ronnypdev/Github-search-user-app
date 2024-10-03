@@ -1,7 +1,9 @@
+import { useState } from "react";
 import Form from "./components/Form"
 import MoonIcon from "./components/icons/MoonIcon"
 
 function App() {
+  const [darkMode, setDarkMode] = useState<boolean>(false);
 
   return (
     <main className="h-full flex justify-center items-start">
@@ -13,7 +15,7 @@ function App() {
             <MoonIcon fillColor="#697C9A"/>
           </div>
         </header>
-        <Form />
+        <Form toogleDarkMode={darkMode} />
       </div>
    </main>
   )
