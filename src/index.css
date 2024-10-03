@@ -46,6 +46,10 @@ body {
   @apply text-[26px] font-SpaceMono text-matteBlack font-bold leading-normal
 }
 
+.heading-1-white {
+  @apply text-[26px] font-SpaceMono text-white font-bold leading-normal
+}
+
 .heading-2 {
   @apply text-[22px] font-SpaceMono text-matteBlack font-bold leading-normal
 }
@@ -56,6 +60,10 @@ body {
 
 .heading-4 {
   @apply text-[13px] font-SpaceMono text-darkGray leading-normal
+}
+
+.heading-4-white {
+  @apply text-[13px] font-SpaceMono text-white leading-normal
 }
 
 .paragraph-text {

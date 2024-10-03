@@ -24,7 +24,8 @@ export default {
       },
       boxShadow: {
         'paleWhite': '0px 16px 30px -10px rgba(70, 96, 187, 0.20)'
-      }
+      },
+      darkMode: "selector",
     },
   },
   plugins: [],
