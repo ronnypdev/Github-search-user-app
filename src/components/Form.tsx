@@ -85,12 +85,12 @@ export default function Form({toggleDarkMode}: FormProps) {
       </form>
 
       {userData &&
-        <div className={`results grid grid-cols-3 gap-[2px] p-9 ${toggleDarkMode ? "bg-navyBlack" : "bg-white shadow-paleWhite"}`}>
+        <div className={`results grid grid-cols-1 md:grid-cols-3 gap-[2px] p-9 ${toggleDarkMode ? "bg-navyBlack" : "bg-white shadow-paleWhite"}`}>
           <div className="col-start-1 col-end-2 flex justify-center items-start">
             <img className="w-[117px] h-[117px] rounded-full" src={userData.avatar_url} alt="Profile Avatar Image" />
           </div>
 
-          <div className="profile-info col-start-2 col-span-3">
+          <div className="profile-info md:col-start-2 md:col-span-3">
             <header className="flex justify-between items-center">
               <h1 className={`${toggleDarkMode ? "heading-1-white" : "heading-1"}`}>{userData.login}</h1>
               <p className={`${toggleDarkMode ? "paragraph-text-white" : "paragraph-text"}`}>Joined {userData.created_at}</p>
