@@ -54,6 +54,10 @@ body {
   @apply text-[22px] font-SpaceMono text-matteBlack font-bold leading-normal
 }
 
+.heading-2-white {
+  @apply text-[22px] font-SpaceMono text-white font-bold leading-normal
+}
+
 .heading-3 {
   @apply text-[16px] font-SpaceMono text-primaryBlue font-normal leading-normal
 }
@@ -70,8 +74,12 @@ body {
   @apply text-[15px] font-SpaceMono text-normalGray leading-normal font-normal
 }
 
+.paragraph-text-white {
+  @apply text-[15px] font-SpaceMono text-white leading-normal font-normal
+}
+
 .stats-section {
-  @apply flex justify-around items-center p-4 bg-paleGray mb-8
+  @apply flex justify-around items-center p-4 mb-8
 }
 
 .links {

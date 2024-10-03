@@ -29,7 +29,7 @@ function App() {
             )}
           </div>
         </header>
-        <Form toogleDarkMode={darkMode} />
+        <Form toggleDarkMode={darkMode} />
       </div>
    </main>
   )

@@ -8,7 +8,7 @@ import WebsiteIcon from "./icons/WebsiteIcon";
 
 
 type FormProps = {
-  toogleDarkMode: boolean;
+  toggleDarkMode: boolean;
 }
 
 interface userInfo {
@@ -26,7 +26,7 @@ interface userInfo {
   login: string;
 }
 
-export default function Form({toogleDarkMode}: FormProps) {
+export default function Form({toggleDarkMode}: FormProps) {
   const [userData, setUserData] = useState<userInfo | null>(null);
   const [userNameInput, setUserNameInput] = useState<string>("");
   const [resultsError, setResutlsError] = useState<string | null>(null);
@@ -63,8 +63,17 @@ export default function Form({toogleDarkMode}: FormProps) {
       <form className="mb-10" onSubmit={submitUserName}>
         <label htmlFor="search" className="relative flex justify-between items-center">
           <SearchIcon fillColor="#0079ff" />
-          <input className="absolute w-full shrink-0 py-[24px] px-[50px] rounded-[15px] shadow-paleWhite" id="search" type="text" value={userNameInput}
-          name="search" placeholder="Search GitHub username…" onChange={searchUserName} />
+          <input
+            className={`absolute w-full shrink-0 py-[24px] px-[50px] rounded-[15px]
+              ${toggleDarkMode ? "placeholder-white bg-navyBlack text-white" : "placeholder-darkGray text-darkGray bg-white shadow-paleWhite"}`
+            }
+            id="search"
+            type="text"
+            value={userNameInput}
+            name="search"
+            placeholder="Search GitHub username…"
+            onChange={searchUserName}
+          />
           <div className="z-[100] ml-auto relative flex justify-between items-center mr-3">
               {resultsError && <p className="text-flameRed text-[15px] leading-normal font-bold mr-4">
                   {userNameInput === "" ? "No results" : ""}
@@ -76,48 +85,64 @@ export default function Form({toogleDarkMode}: FormProps) {
       </form>
 
       {userData &&
-        <div className="results bg-white grid grid-cols-3 gap-[2px] p-9 shadow-paleWhite">
+        <div className={`results grid grid-cols-3 gap-[2px] p-9 ${toggleDarkMode ? "bg-navyBlack" : "bg-white shadow-paleWhite"}`}>
           <div className="col-start-1 col-end-2 flex justify-center items-start">
             <img className="w-[117px] h-[117px] rounded-full" src={userData.avatar_url} alt="Profile Avatar Image" />
           </div>
 
           <div className="profile-info col-start-2 col-span-3">
             <header className="flex justify-between items-center">
-              <h1 className="heading-1">{userData.login}</h1>
-              <p className="paragraph-text">Joined {userData.created_at}</p>
+              <h1 className={`${toggleDarkMode ? "heading-1-white" : "heading-1"}`}>{userData.login}</h1>
+              <p className={`${toggleDarkMode ? "paragraph-text-white" : "paragraph-text"}`}>Joined {userData.created_at}</p>
             </header>
             <h3 className="heading-3 mb-5">@{userData.login}</h3>
-            <p className="paragraph-text mb-8">{userData.bio}</p>
-            <div className="stats-section">
+            <p className={`${toggleDarkMode ? "paragraph-text-white" : "paragraph-text"} mb-8`}>{userData.bio}</p>
+            <div className={`stats-section ${toggleDarkMode ? "bg-black" : "bg-paleGray" }`}>
               <div>
-                <h4 className="heading-4">Repos</h4>
-                <h2 className="heading-2">{userData.public_repos}</h2>
+                <h4 className={`${toggleDarkMode ? "heading-4-white" : "heading-4"}`}>Repos</h4>
+                <h2 className={`${toggleDarkMode ? "heading-2-white" : "heading-2"}`}>{userData.public_repos}</h2>
               </div>
               <div>
-                <h4 className="heading-4">Followers</h4>
-                <h2 className="heading-2">{userData.followers}</h2>
+                <h4 className={`${toggleDarkMode ? "heading-4-white" : "heading-4"}`}>Followers</h4>
+                <h2 className={`${toggleDarkMode ? "heading-2-white" : "heading-2"}`}>{userData.followers}</h2>
               </div>
               <div>
-                <h4 className="heading-4">Following</h4>
-                <h2 className="heading-2">{userData.following}</h2>
+                <h4 className={`${toggleDarkMode ? "heading-4-white" : "heading-4"}`}>Following</h4>
+                <h2 className={`${toggleDarkMode ? "heading-2-white" : "heading-2"}`}>{userData.following}</h2>
               </div>
             </div>
             <div className="links">
               <div className="link-item mb-4">
-                <LocationIcon fillColor="#4b6a9b"/>
-                {userData.location ? <a className="paragraph-text ml-3" href={userData.location}>{userData.location}</a> : <p className="paragraph-text ml-2">None</p>}
+                {toggleDarkMode ? <LocationIcon fillColor="#FFFFFF"/> :<LocationIcon fillColor="#4b6a9b"/>}
+                {userData.location ?
+                  <a className={`${toggleDarkMode ? "paragraph-text-white" : "paragraph-text"} ml-3`} href={userData.location}>{userData.location}</a>
+                  :
+                  <p className={`${toggleDarkMode ? "paragraph-text-white" : "paragraph-text"} ml-2`}>None</p>
+                }
               </div>
               <div className="link-item mb-4">
-                <TwitterIcon fillColor="#4b6a9b"/>
-                {userData.twitter_username ? <a className="paragraph-text ml-3" href={userData.twitter_username}>{userData.twitter_username}</a> : <p className="paragraph-text ml-2">None</p>}
+                {toggleDarkMode ? <TwitterIcon fillColor="#FFFFFF"/> :<TwitterIcon fillColor="#4b6a9b"/>}
+                {userData.twitter_username ?
+                  <a className={`${toggleDarkMode ? "paragraph-text-white" : "paragraph-text"} ml-3`} href={userData.twitter_username}>{userData.twitter_username}</a>
+                  :
+                  <p className={`${toggleDarkMode ? "paragraph-text-white" : "paragraph-text"} ml-2`}>None</p>
+                }
               </div>
               <div className="link-item mb-4">
-                <WebsiteIcon fillColor="#4b6a9b"/>
-                {userData.blog ? <a className="paragraph-text ml-3 hover:underline" href={userData.blog}>{userData.blog}</a> : <p className="paragraph-text ml-2">None</p>}
+                {toggleDarkMode ? <WebsiteIcon fillColor="#FFFFFF"/> : <WebsiteIcon fillColor="#4b6a9b"/>}
+                {userData.blog ?
+                  <a className={`${toggleDarkMode ? "paragraph-text-white" : "paragraph-text"} hover:underline ml-3`} href={userData.blog}>{userData.blog}</a>
+                  :
+                  <p className={`${toggleDarkMode ? "paragraph-text-white" : "paragraph-text"} ml-2`}>None</p>
+                }
               </div>
               <div className="link-item mb-4">
-                <CompanyIcon fillColor="#4b6a9b"/>
-                {userData.company ? <a className="paragraph-text ml-3" href={userData.company}>{userData.company}</a> : <p className="paragraph-text ml-2">None</p>}
+                {toggleDarkMode ? <CompanyIcon fillColor="#FFFFFF"/> : <CompanyIcon fillColor="#4b6a9b"/>}
+                {userData.company ?
+                  <a className={`${toggleDarkMode ? "paragraph-text-white" : "paragraph-text"} ml-3`} href={userData.company}>{userData.company}</a>
+                  :
+                  <p className={`${toggleDarkMode ? "paragraph-text-white" : "paragraph-text"} ml-2`}>None</p>
+                }
               </div>
             </div>
           </div>
